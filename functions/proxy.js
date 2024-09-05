@@ -1,15 +1,14 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event, context) => {
-  const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-  const targetUrl = `https://youtube.com${event.path}`; // Update as needed
+  const { default: fetch } = await import('node-fetch'); // Dynamic import for ES module
+
+  const url = `https://youtube.com${event.path}`; // Customize this URL as needed
 
   try {
-    const response = await fetch(corsProxy + targetUrl, {
+    const response = await fetch(url, {
       method: event.httpMethod,
       headers: {
         ...event.headers,
-        'Host': 'youtube.com',
+        'Host': 'youtube.com' // Replace with the target host if necessary
       },
     });
 
@@ -29,3 +28,4 @@ exports.handler = async (event, context) => {
     };
   }
 };
+
