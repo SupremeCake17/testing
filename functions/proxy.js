@@ -8,16 +8,19 @@ exports.handler = async (event, context) => {
       method: event.httpMethod,
       headers: {
         ...event.headers,
-        'Host': 'youtube.com' // Replace with the target host if necessary
+        'Host': 'youtube.com', // Replace with the target host if necessary
       },
     });
 
     const body = await response.text();
 
+    // Ensure Content-Type header is defined
+    const contentType = response.headers.get('content-type') || 'text/html';
+
     return {
       statusCode: response.status,
       headers: {
-        'Content-Type': response.headers.get('content-type'),
+        'Content-Type': contentType,
       },
       body,
     };
