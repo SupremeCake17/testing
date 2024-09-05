@@ -1,13 +1,14 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event, context) => {
+  const fetch = (await import('node-fetch')).default;
+
+  const url = `https://youtube.com${event.path}`; // Customize this as needed
+
   try {
-    const url = 'https://youtube.com' + event.path;
     const response = await fetch(url, {
       method: event.httpMethod,
       headers: {
         ...event.headers,
-        'Host': 'youtube.com'
+        'Host': 'youtube.com' // Replace with the target host if necessary
       },
     });
 
