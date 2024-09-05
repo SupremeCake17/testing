@@ -1,7 +1,7 @@
 exports.handler = async (event, context) => {
   const { default: fetch } = await import('node-fetch'); // Dynamic import for ES module
 
-  const url = `https://youtube.com${event.path}`; // Customize this URL as needed
+  const url = `https://https://loquacious-bonbon-325a62.netlify.app/${event.path}`; // Customize this URL as needed
 
   try {
     const response = await fetch(url, {
