@@ -1,14 +1,14 @@
 exports.handler = async (event, context) => {
   const { default: fetch } = await import('node-fetch'); // Dynamic import for ES module
 
-  const url = `https://loquacious-bonbon-325a62.netlify.app/${event.path}`; // Customize this URL as needed
+  const url = `https://youtube.com/${event.path}`; // Directly access YouTube or your target
 
   try {
     const response = await fetch(url, {
       method: event.httpMethod,
       headers: {
         ...event.headers,
-        'Host': 'youtube.com', // Replace with the target host if necessary
+        'Host': 'youtube.com', // Ensure this is the correct target host
       },
     });
 
@@ -31,4 +31,3 @@ exports.handler = async (event, context) => {
     };
   }
 };
-
